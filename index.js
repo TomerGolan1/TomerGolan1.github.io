@@ -20,6 +20,17 @@ window.onload = () => {
     },
   });
 
+  // Stop any playing video when we leave its slide
+swiper.on("slideChangeTransitionStart", () => {
+  document.querySelectorAll(".swiper-slide video").forEach((vid) => {
+    const parentSlide = vid.closest(".swiper-slide");
+    if (!parentSlide.classList.contains("swiper-slide-active")) {
+      vid.pause();          // stop sound
+      vid.currentTime = 0;  // rewind to the start (remove this line if you prefer resume)
+    }
+  });
+});
+
   const observer = new IntersectionObserver((items) => {
     items.forEach((item) => {
       if (item.isIntersecting) {
