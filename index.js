@@ -28,6 +28,11 @@ window.onload = () => {
       } else {
         item.target.style.transform = "translateY(0px)";
         item.target.style.opacity = 0;
+        /* If the hidden element is a video, stop it */
+        if (item.target.tagName === "VIDEO") {
+        item.target.pause();
+        item.target.currentTime = 0;   // rewind to the start (optional)
+        }
       }
     });
   });
