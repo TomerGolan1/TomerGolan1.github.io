@@ -52,4 +52,6 @@ window.onload = () => {
   images.forEach((item) => {
     observer.observe(item);
   });
+  const media = document.querySelectorAll("img, video");
+  media.forEach((item) => observer.observe(item));
 };
